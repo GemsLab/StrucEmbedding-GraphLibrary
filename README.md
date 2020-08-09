@@ -17,7 +17,7 @@ Make sure you are using *Python 3.7+* for all below!
 
 ### Import and load a dataset
 ```py
-from semb.data import load, get_dataset_ids
+from semb.datasets import load, get_dataset_ids
 # explore all datasets (both built in and extended by 3rd party)
 ids = get_dataset_ids()
 # load a dataset
