@@ -28,7 +28,7 @@ graph = load(ids[0])
 ```py
 from semb.methods import load, get_method_ids
 # explore all methods (both built in and extended by 3rd party)
-ids = ge_method_ids()
+ids = get_method_ids()
 # load a method, returns a constructor for a method's base class
 Method = load(ids[0])
 # create and run a method.
