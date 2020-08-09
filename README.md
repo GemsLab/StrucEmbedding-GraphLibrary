@@ -46,7 +46,7 @@ First make sure the `semb` library is installed.
 
 - Create a Python 3.7+ [package](https://packaging.python.org/tutorials/packaging-projects/) with a name in form of `semb-dataset[$YOUR_CHOSEN_DATASET_ID]`
 - Within the package root directory, make sure `__init__.py` is present
-- Create a `dataset.py` and make a `Method` class that inherits from `from semb.data import BaseDataset` and implement the required methods. See `semb/datasets/airports/dataset.py` for more details.
+- Create a `dataset.py` and make a `Method` class that inherits from `from semb.datasets import BaseDataset` and implement the required methods. See `semb/datasets/airports/dataset.py` for more details.
 - Install the package via `setup.py` or pip.
 - Now the dataset is loadable by the main client program that uses `semb`!
 
@@ -54,7 +54,7 @@ First make sure the `semb` library is installed.
 
 - Create a Python 3.7+ [package](https://packaging.python.org/tutorials/packaging-projects/) with a name in form of `semb-method[$YOUR_CHOSEN_METHOD_ID]`
 - Within the package root directory, make sure `__init__.py` is present
-- Create a `dataset.py` and make a `Dataset` class that inherits from `from semb.data import BaseDataset` and implement the required methods. See `semb/methods/node2vec/method.py` for more details.
+- Create a `dataset.py` and make a `Dataset` class that inherits from `from semb.methods import BaseMethod` and implement the required methods. See `semb/methods/node2vec/method.py` for more details.
 - Install the package via `setup.py` or pip.
 - Now the method is load-able by the main client program that uses `semb`!
 
