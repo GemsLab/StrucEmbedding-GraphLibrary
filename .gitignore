@@ -143,3 +143,7 @@ cython_debug/
 
 # backup files
 *.bak
+
+# Mac OS file
+*.DS_Store
+
