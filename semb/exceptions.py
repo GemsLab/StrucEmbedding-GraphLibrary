@@ -9,3 +9,6 @@ class MethodNotExistException(Exception):
 
 class MethodKeywordUnAllowedException(Exception):
     pass
+
+class InputFormatError(Exception):
+    pass
