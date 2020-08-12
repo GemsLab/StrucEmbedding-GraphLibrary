@@ -23,7 +23,7 @@ class Method(BaseMethod):
 		else:
 			until_layer = None
 		G = struc2vec.Graph(self.graph, self.params['directed'],
-		                    self.params['workers'], untilLayer=until_layer)
+		                    self.params['worker'], untilLayer=until_layer)
 		if self.params['opt1']:
 			G.preprocess_neighbors_with_bfs_compact()
 		else:
@@ -41,7 +41,7 @@ class Method(BaseMethod):
 	def learn_embeddings(self):
 		walks = LineSentence('random_walks.txt')
 		self.model = Word2Vec(walks, size=self.params['dim'], window=self.params['window_size'],
-	                	 min_count=0, hs=1, sg=1, workers=self.params['workers'], iter=self.params['iter'])
+	                	 min_count=0, hs=1, sg=1, workers=self.params['worker'], iter=self.params['iter'])
 		self.embeddings = self.model.wv
 
 	def get_id(self):

@@ -14,5 +14,9 @@ class Method(BaseMethod):
         rep_method = RepMethod(max_layer=self.params['max_layer'], p=self.params['dim'], 
                               alpha=self.params['discount'], gammastruc=self.params['gamma']) 
         # FIXME: this doesnt look like a standard embeddings format
-        self.embeddings = get_representations(self.graph, rep_method)
+        representations = get_representations(self.graph, rep_method)
+        list_nodes = self.graph.node()
+        self.embeddings = dict()
+        for i in range(0, len(list_nodes)):
+        	self.embeddings[i] = representations[i].tolist()
 
