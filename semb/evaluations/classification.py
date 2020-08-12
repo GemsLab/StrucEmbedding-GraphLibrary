@@ -47,19 +47,20 @@ def perform_classification(dict_embeddings, dict_labels, classifier='LogisticReg
 
     list_nodes_embeddings = set([i for i, _ in dict_embeddings.items()])
     list_nodes_labels = set([i for i, _ in dict_labels.items()])
-    list_nodes_intersection = list_nodes_labels
+    list_nodes_intersection = sorted(list(list_nodes_labels))
 
     if list_nodes_embeddings != list_nodes_labels:
         print("Warning: Nodes from the input embeddings and the input labels mismatch!")
         print("Perform classification on the intersection.")
-        list_nodes_intersection = list_nodes_embeddings.intersection(list_nodes_labels)
+        list_nodes_intersection = sorted(list(list_nodes_embeddings.intersection(list_nodes_labels)))
 
     X = list()
     y = list()
+
     for cur_node in list_nodes_intersection:
         X += [dict_embeddings[cur_node]]
         y += [dict_labels[cur_node]]
-    X = np.array(X)
+    X = np.array(X).astype("float")
     y = np.array(y)
 
     kf = sklearn.model_selection.KFold(n_splits=5, shuffle=True, random_state=0)
@@ -71,13 +72,7 @@ def perform_classification(dict_embeddings, dict_labels, classifier='LogisticReg
         X_train, X_test = X[train_index], X[test_index]
         y_train, y_test = y[train_index], y[test_index]
         # TODO: Add more classifiers here
-        clf = OneVsRestClassifier(
-            LogisticRegression(
-                random_state=0, 
-                solver='lbfgs', 
-                penalty='l2', 
-                C=1.0, n_jobs=-1), 
-            n_jobs=-1)
+        clf = LogisticRegression(random_state=0, solver='lbfgs', multi_class='multinomial', penalty='l2', C=1.0)
         if classifier == 'SVM':
             clf = OneVsRestClassifier(
                 svm.LinearSVC(

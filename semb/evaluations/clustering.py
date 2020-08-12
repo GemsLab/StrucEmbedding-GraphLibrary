@@ -48,12 +48,12 @@ def perform_clustering(dict_embeddings, dict_labels, **kwargs):
 
     list_nodes_embeddings = set([i for i, _ in dict_embeddings.items()])
     list_nodes_labels = set([i for i, _ in dict_labels.items()])
-    list_nodes_intersection = list_nodes_labels
+    list_nodes_intersection = sorted(list(list_nodes_labels))
 
     if list_nodes_embeddings != list_nodes_labels:
         print("Warning: Nodes from the input embeddings and the input labels mismatch!")
         print("Perform classification on the intersection.")
-        list_nodes_intersection = list_nodes_embeddings.intersection(list_nodes_labels)
+        list_nodes_intersection = sorted(list(list_nodes_embeddings.intersection(list_nodes_labels)))
 
     X = list()
     y = list()
