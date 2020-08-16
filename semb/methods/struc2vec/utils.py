@@ -5,8 +5,8 @@ import pickle
 from itertools import islice
 import os.path
 
-# dir_f = str(Path().resolve()) #+ "/lib/struc2vec/src"#os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-folder_pickles = os.path.abspath(os.getcwd()) + "/lib/struc2vec/pickles/" # + '/pickles/'
+folder_pickles = os.path.join(os.path.dirname(__file__), "pickles/")
+walk_fname = os.path.join(os.path.dirname(__file__), "random_walks.txt")
 
 def returnPickle():
     return folder_pickles
