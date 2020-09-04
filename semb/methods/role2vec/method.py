@@ -1,4 +1,5 @@
 import math
+import copy
 import numpy as np
 import pandas as pd
 import networkx as nx
@@ -18,17 +19,45 @@ class Method(BaseMethod):
 
     __PARAMS__ = dict(window_size=5, walk_number=10, walk_length=80, sampling="first", p=1.0, q=1.0, \
                       dim=128, down_sampling=0.001, alpha=0.025, min_alpha=0.025, min_count=1, workers=1, \
-                      epochs=10, features='wl', label_iterations=2, log_base=1.5, graphlet_size=4, \
+                      epochs=10, features='degree', label_iterations=2, log_base=1.5, graphlet_size=4, \
                       quantiles=5, motif_compression='string', seed=42, factors=8, clusters=50, beta=0.01)
 
     def get_id(self):
         return "role2vec"
 
     def train(self):
+        self.old_graph = copy.deepcopy(self.graph)
+        old_edges = [e for e in self.old_graph.edges()]
+        dict_node_o2n = dict()
+        list_edges = list()
+
+        count = 0
+        for edge in old_edges:
+            src = int(edge[0])
+            dst = int(edge[1])
+
+            if src not in dict_node_o2n:
+                dict_node_o2n[src] = count
+                count += 1
+            if dst not in dict_node_o2n:
+                dict_node_o2n[dst] = count
+                count += 1
+            list_edges += [(dict_node_o2n[src], dict_node_o2n[dst])]
+
+        G = nx.Graph()
+        G.add_edges_from(list_edges)
+        self.graph = G
+
         self.do_walks()
         self.create_structural_features()
         self.pooled_features = self.create_pooled_features()
-        self.embedding = self.create_embedding()
+        reps = self.create_embedding()
+
+        dict_n2o = {val: key for key, val in dict_node_o2n.items()}
+        self.embeddings = dict()
+        for i, node in enumerate(self.graph.nodes()):
+            self.embeddings[dict_n2o[node]] = reps[i].tolist()
+
 
     def do_walks(self):
         """

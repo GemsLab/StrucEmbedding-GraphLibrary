@@ -45,7 +45,7 @@ class Sentences(object):
 class Method(BaseMethod):
 
     __PARAMS__ = dict(dim=128, walk_length=10, num_walks=80, window_size=10,
-                      until_k=4, iter=5, workers=5, flag='sp')
+                      until_k=4, iter=5, workers=5, flag='wl')
 
     def get_id(self):
         return "riwalk"
@@ -55,7 +55,10 @@ class Method(BaseMethod):
         os.system('rm -rf %s' %
                   os.path.join(WALK_FILES_DIR, "__random_walks_*.txt"))
         nx_g, mapping = self.preprocess_graph(self.graph)
-        self.embeddings = self.learn(nx_g, mapping)
+        reps = self.learn(nx_g, mapping)
+        self.embeddings = dict()
+        for cur_node in self.graph.nodes():
+            self.embeddings[cur_node] = reps.get_vector(str(cur_node)).tolist()
 
     def learn_embeddings(self):
         """

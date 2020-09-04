@@ -29,4 +29,8 @@ class Method(BaseMethod):
             proc = 'exact'
         representations, heat_print, taus = graphwave_alg(
             self.graph, time_points, taus=taus_input, verbose=False, proc=proc)
-        self.embeddings = representations
+        self.embeddings = dict()
+        list_nodes = list(self.graph.nodes())
+        for i in range(0, representations.shape[0]):
+            self.embeddings[list_nodes[i]] = representations[i].tolist()
+            

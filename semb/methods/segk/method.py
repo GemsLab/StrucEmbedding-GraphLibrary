@@ -10,15 +10,20 @@ from .utils import extract_egonets
 
 class Method(BaseMethod):
 
-    __PARAMS__ = dict(radius=2, dim=10, kernel='shortest_path')
+    __PARAMS__ = dict(radius=2, dim=128, kernel='weisfeiler_lehman')
 
     def get_id(self):
         return "segk"
 
     def train(self):
-        self.embeddings = self.segk(
-            self.graph.nodes, self.graph.edges, 
-            self.params['radius'], self.params['dim'], self.params['kernel'])
+        nodes = [i for i in self.graph.nodes()]
+        edges = [e for e in self.graph.edges() if e[0] != e[1]]
+        reps = self.segk(nodes, edges, self.params['radius'], self.params['dim'], self.params['kernel'])
+        self.embeddings = dict()
+        for i, cur_node in enumerate(self.graph.nodes):
+            self.embeddings[cur_node] = reps[i, :].tolist()
+
+
 
     def segk(self, nodes, edgelist, radius, dim, kernel):
         n = len(nodes)

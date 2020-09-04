@@ -143,3 +143,16 @@ cython_debug/
 
 # backup files
 *.bak
+
+# Mac OS file
+*.DS_Store
+
+# struc2vec pickles and random walks
+semb/methods/struc2vec/pickles/
+semb/methods/struc2vec/random_walks.txt
+
+# drne intermediate files
+semb/methods/drne/eni/
+
+# riwalk intermediate files
+semb/methods/riwalk/walks/
