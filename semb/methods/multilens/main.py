@@ -67,6 +67,7 @@ def get_combined_feature_sequence(graph, rep_method, current_node, input_dense_m
 
 def get_features(graph, rep_method, input_dense_matrix = None, nodes_to_embed = None):
 
+	num_buckets = rep_method.num_buckets
 	feature_wid_sum, feature_wid_ind = get_feature_n_buckets(input_dense_matrix, num_buckets, rep_method.bucket_max_value)
 	feature_matrix = np.zeros([graph.num_nodes, feature_wid_sum * len(graph.unique_cat)])
 

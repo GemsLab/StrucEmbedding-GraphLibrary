@@ -110,7 +110,7 @@ def simple_log2(x):
 
 def save_random_walks(walks, part, i):
     indexes = np.random.permutation(len(walks)).tolist()
-    with open('lib/RiWalk/walks/__random_walks_{}_{}.txt'.format(part, i), 'w') as f:
+    with open(WALK_FILES_DIR + '__random_walks_{}_{}.txt'.format(part, i), 'w') as f:
         for i in indexes:
             walk = walks[i]
             f.write(u"{}\n".format(u" ".join(str(v) for v in walk)))

@@ -153,3 +153,6 @@ semb/methods/struc2vec/random_walks.txt
 
 # drne intermediate files
 semb/methods/drne/eni/
+
+# riwalk intermediate files
+semb/methods/riwalk/walks/
