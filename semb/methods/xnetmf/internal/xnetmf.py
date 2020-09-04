@@ -204,20 +204,20 @@ def get_representations(graph, rep_method, verbose = True):
 		reprsn = reprsn / np.linalg.norm(reprsn, axis = 1).reshape((reprsn.shape[0],1))
 	return reprsn
 
-if __name__ == "__main__":
-	if len(sys.argv) < 2:
-		#####PUT IN YOUR GRAPH AS AN EDGELIST HERE (or pass as cmd line argument)#####  
-		#(see networkx read_edgelist() method...if networkx can read your file as an edgelist you're good!)
-		graph_file = "data/arenas_combined_edges.txt"
-	else:
-		graph_file = sys.argv[1]
-	nx_graph = nx.read_edgelist(graph_file, nodetype = int, comments="%")
-	adj_matrix = nx.adjacency_matrix(nx_graph).todense()
+# if __name__ == "__main__":
+# 	if len(sys.argv) < 2:
+# 		#####PUT IN YOUR GRAPH AS AN EDGELIST HERE (or pass as cmd line argument)#####  
+# 		#(see networkx read_edgelist() method...if networkx can read your file as an edgelist you're good!)
+# 		graph_file = "data/arenas_combined_edges.txt"
+# 	else:
+# 		graph_file = sys.argv[1]
+# 	nx_graph = nx.read_edgelist(graph_file, nodetype = int, comments="%")
+# 	adj_matrix = nx.adjacency_matrix(nx_graph).todense()
 	
-	graph = Graph(adj_matrix)
-	rep_method = RepMethod(max_layer = 2) #Learn representations with xNetMF.  Can adjust parameters (e.g. as in REGAL)
-	representations = get_representations(graph, rep_method)
-	print(representations.shape)
+# 	graph = Graph(adj_matrix)
+# 	rep_method = RepMethod(max_layer = 2) #Learn representations with xNetMF.  Can adjust parameters (e.g. as in REGAL)
+# 	representations = get_representations(graph, rep_method)
+# 	print(representations.shape)
 
 
 
