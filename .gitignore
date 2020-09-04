@@ -147,3 +147,6 @@ cython_debug/
 # Mac OS file
 *.DS_Store
 
+# struc2vec pickles
+semb/methods/struc2vec/pickles/
+

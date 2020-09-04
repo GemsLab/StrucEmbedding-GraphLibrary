@@ -29,7 +29,7 @@ class Method(BaseMethod):
         model = Word2Vec(walks, size=self.params['dim'], window=self.params['window_size'],
                          min_count=0, sg=1, workers=self.params['workers'], iter=self.params['iter'])
         self.model = model
-        print(g.G)
+        # print(g.G)
         self.embeddings = dict()
         for cur_node in g.G.nodes():
             self.embeddings[cur_node] = self.model.wv.get_vector(str(cur_node)).tolist()

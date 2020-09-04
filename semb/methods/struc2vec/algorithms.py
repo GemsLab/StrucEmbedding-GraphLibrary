@@ -185,7 +185,7 @@ def generate_random_walks(num_walks,walk_length,workers,vertices):
     save_random_walks(walks)
 
 def save_random_walks(walks):
-    with open('random_walks.txt', 'w') as file:
+    with open(walk_fname, 'w') as file:
         for walk in walks:
             line = ''
             for v in walk:
