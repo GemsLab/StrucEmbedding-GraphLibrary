@@ -607,7 +607,7 @@ def generate_distances_network(workers):
     logging.info('Creating distance network...')
 
     os.system("rm "+returnPickle().replace(' ', '\ ')+"weights_distances-layer-*.pickle")
-    # print('!!!!!')
+
     print("rm "+returnPickle().replace(' ', '\ ')+"weights_distances-layer-*.pickle")
     with ProcessPoolExecutor(max_workers=1) as executor:
         job = executor.submit(generate_distances_network_part1,workers)

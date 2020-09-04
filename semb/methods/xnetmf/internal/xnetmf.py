@@ -218,8 +218,3 @@ def get_representations(graph, rep_method, verbose = True):
 # 	rep_method = RepMethod(max_layer = 2) #Learn representations with xNetMF.  Can adjust parameters (e.g. as in REGAL)
 # 	representations = get_representations(graph, rep_method)
 # 	print(representations.shape)
-
-
-
-
-

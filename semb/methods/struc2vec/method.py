@@ -8,6 +8,8 @@ from . import graph
 from .utils import *
 from .graph import *
 from semb.methods import BaseMethod
+from .utils import *
+from .graph import *
 
 """
 Driver for learning Struc2Vec embedding
