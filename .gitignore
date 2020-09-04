@@ -151,3 +151,5 @@ cython_debug/
 semb/methods/struc2vec/pickles/
 semb/methods/struc2vec/random_walks.txt
 
+# drne intermediate files
+semb/methods/drne/eni/

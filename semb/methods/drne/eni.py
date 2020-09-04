@@ -127,7 +127,7 @@ class eni(object):
                 n += 1
                 end = time.time()
                 #process = psutil.Process(os.getpid())
-                print(("epoch: {}/{}, batch: {}/{}, loss: {:.6f}, structure_loss: {:.6f}, orth_loss: {:.6f}, guilded_loss: {:.6f}, time: {:.4f}s").format(epoch, self.params.epochs_to_train, n-1, total_num, total_loss, structure_loss, orth_loss, guilded_loss, end-begin))
+                print(("epoch: {}/{}, batch: {}/{}, loss: {:.6f}, structure_loss: {:.6f}, orth_loss: {:.6f}, guilded_loss: {:.6f}, time: {:.4f}s").format(epoch, self.params['epochs_to_train'], n-1, total_num, total_loss, structure_loss, orth_loss, guilded_loss, end-begin))
                 if num % 5 == 0:
                     summary_str = self.sess.run(self.merged_summary, feed_dict=batch_data)
                     self.summary_writer.add_summary(summary_str, num)
