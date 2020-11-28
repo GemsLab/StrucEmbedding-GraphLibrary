@@ -1,5 +1,6 @@
-from ..exceptions import UnimplementedException, MethodKeywordUnAllowedException
+from ..exceptions import *
 import networkx as nx
+import pandas as pd
 
 def get_label(input_dir, delimeter = ' ' ,**kwargs):
     """
@@ -33,3 +34,56 @@ def get_label(input_dir, delimeter = ' ' ,**kwargs):
     for key, val in dict_counter.items():
         print(">>> Label", key, 'appears', val, 'times')
     return dict_labels
+
+def concatenate_result_pd(list_results):
+    """
+    Concatenate the results from the clustering / classifcation test
+    Arguments:
+    list_results {list of tuples} --  [("method_name", dict_result)], where the dict_result is the returned dict
+                                      from the perform_clustering() and perform_classification() functions
+    
+    Return:
+    pd_results -- a pandas table showing the results
+
+    """
+    # Perform input checking on the list_results
+    if len(list_results) == 0:
+        raise InputFormatErrorException("Input length 0!")
+
+    for cur_item in list_results:
+        if (len(cur_item) != 2):
+            raise InputFormatErrorException("Please input the results as list of tuples, i.e. [(\"method_name\", dict_result)]")
+
+        if (not isinstance(cur_item[0], str)) or (not isinstance(cur_item[1], dict)):
+            raise InputFormatErrorException("Please input the results as list of tuples, i.e. [(\"method_name\", dict_result)]")
+
+        if "overall" not in cur_item[1]:
+            raise InputFormatErrorException("Invalid input. Please make sure that the input result is generated from perform_classification() or perform_clustering()")
+
+    
+    pd_results = pd.DataFrame()
+    pd_results['methods'] = [i[0] for i in list_results]
+
+
+    
+    # Peform checking on whether classifcation or clustering is tested
+    if 'accuracy' in list_results[0][1]['overall']:
+        # Classification
+        for cur_item in list_results:
+            if 'accuracy' not in cur_item[1]['overall']:
+                raise InputFormatErrorException("Invalid input. Please make sure that the input result is generated from perform_classification()")
+                
+        for metric in ['accuracy', 'f1_macro', 'f1_micro', 'auc_micro', 'auc_macro']:
+            for value in ['mean', 'std']:
+                pd_results[metric + '_' + value] = [i[1]['overall'][metric][value] for i in list_results]
+    else:
+        # Clustering
+        for cur_item in list_results:
+            if 'purity' not in cur_item[1]['overall']:
+                raise InputFormatErrorException("Invalid input. Please make sure that the input result is generated from perform_clustering()")
+        
+        for metric in ['purity', 'nmi']:
+            pd_results[metric] = [i[1]['overall'][metric] for i in list_results]
+        
+    return pd_results
+

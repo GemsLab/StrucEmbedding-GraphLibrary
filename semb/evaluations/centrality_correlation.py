@@ -1,4 +1,4 @@
-from ..exceptions import UnimplementedException, MethodKeywordUnAllowedException
+from ..exceptions import *
 import networkx as nx
 import numpy as np
 import sklearn
@@ -33,7 +33,7 @@ def get_centrality(graph, centrality='degree', **kwargs):
     """
 
     if not isinstance(graph, nx.classes.graph.Graph):
-        raise InputFormatError("Please input graph as NetworkX.graph object")
+        raise InputFormatErrorException("Please input graph as NetworkX.graph object")
 
     if centrality == 'degree':
         dict_centrality = dict(graph.degree())
@@ -67,7 +67,7 @@ def centrality_correlation(graph, dict_embeddings, centrality='degree', similari
     """
 
     if not isinstance(graph, nx.classes.graph.Graph):
-        raise InputFormatError("Please input graph as NetworkX.graph object")
+        raise InputFormatErrorException("Please input graph as NetworkX.graph object")
 
     if centrality == 'degree':
         dict_centrality = dict(graph.degree())

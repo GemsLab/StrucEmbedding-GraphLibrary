@@ -1,4 +1,4 @@
-from ..exceptions import UnimplementedException, MethodKeywordUnAllowedException
+from ..exceptions import *
 
 import networkx as nx
 import numpy as np
@@ -19,12 +19,8 @@ def purity_score(y_true, y_pred):
 def kmeans_best_result(X, y, n_clusters):
     list_purity = list()
     list_nmi = list()
-    
     kmeans = KMeans(n_clusters=n_clusters, n_init=min(len(y), 1000), init='k-means++').fit(X)
-    
-    list_purity += [purity_score(y, kmeans.labels_)]
-    list_nmi += [normalized_mutual_info_score(y, kmeans.labels_)]
-    return {'purity': list_purity, 'nmi': list_nmi}
+    return {'purity': purity_score(y, kmeans.labels_), 'nmi': normalized_mutual_info_score(y, kmeans.labels_)}
 
 
 def perform_clustering(dict_embeddings, dict_labels, **kwargs):
