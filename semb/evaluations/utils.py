@@ -25,11 +25,13 @@ def get_label(input_dir, delimeter = ' ' ,**kwargs):
     with open(input_dir, 'r') as f:
         lines = f.read().splitlines()
     for line in lines:
-        dict_labels[int(line.split(' ')[0])] = int(line.split(' ')[1])
-        if int(line.split(' ')[1]) not in dict_counter:
-            dict_counter[int(line.split(' ')[1])] = 1
+        cur_node = int(line.split(delimeter)[0])
+        cur_label = int(line.split(delimeter)[1])
+        dict_labels[cur_node] = cur_label
+        if cur_label not in dict_counter:
+            dict_counter[cur_label] = 1
         else:
-            dict_counter[int(line.split(' ')[1])] += 1
+            dict_counter[cur_label] += 1
     print("Read in", len(dict_labels), 'node labels.')
     for key, val in dict_counter.items():
         print(">>> Label", key, 'appears', val, 'times')

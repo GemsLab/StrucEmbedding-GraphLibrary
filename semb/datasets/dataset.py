@@ -9,7 +9,7 @@ from requests_file import FileAdapter
 from ..exceptions import UnimplementedException
 
 # the Data type for all supported data sets
-DatasetInfo = namedtuple('DatasetInfo', ['name', 'description', 'src_url'])
+DatasetInfo = namedtuple('DatasetInfo', ['name', 'description', 'src_url', 'label_url'])
 
 # the base class for all new data providers
 class BaseDataset(object):
@@ -25,6 +25,11 @@ class BaseDataset(object):
     def load_dataset(self, dataset: DatasetInfo, **kwargs) -> nx.Graph:
         raise UnimplementedException(
             "Please implement the load_dataset() method for convert the dataset into graph")
+
+    def load_label(self, dataset: DatasetInfo) -> dict:
+        raise UnimplementedException(
+            "Please implement the load_label() method to load the corresponding label file")
+
 
     def _fetch_url(self, url: str):
         """
