@@ -6,7 +6,7 @@ This SEMB library allows fast onboarding to get and evaluate structural node emb
 
 The library itself has already included a set of popular methods and datasets ready for immediate use.
 
-- Built-in methods: [node2vec](https://github.com/aditya-grover/node2vec), [struc2vec](https://github.com/leoribeiro/struc2vec), [GraphWave](https://github.com/snap-stanford/graphwave), [xNetMF](https://github.com/GemsLab/REGAL), [role2vec](https://github.com/benedekrozemberczki/role2vec), [DRNE](https://github.com/tadpole/DRNE), [MultiLENS](https://github.com/GemsLab/MultiLENS), [RiWalk](github.com/maxuewei2/RiWalk), [SEGK](https://github.com/giannisnik/segk), (more datasets to be added in the future)
+- Built-in methods: [node2vec](https://github.com/aditya-grover/node2vec), [struc2vec](https://github.com/leoribeiro/struc2vec), [GraphWave](https://github.com/snap-stanford/graphwave), [xNetMF](https://github.com/GemsLab/REGAL), [role2vec](https://github.com/benedekrozemberczki/role2vec), [DRNE](https://github.com/tadpole/DRNE), [MultiLENS](https://github.com/GemsLab/MultiLENS), [RiWalk](github.com/maxuewei2/RiWalk), [SEGK](https://github.com/giannisnik/segk), (more methods to add in the near future)
 
 - Built-in datasets: 
 
