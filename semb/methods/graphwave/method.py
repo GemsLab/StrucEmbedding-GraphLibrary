@@ -21,7 +21,7 @@ class Method(BaseMethod):
             taus_input = self.params['taus']
         # learns representations of dimension 4x as many time points?
         time_points = np.linspace(
-            self.params['time_bounds'][0], self.params['time_bounds'][1], num=int(self.params['dim'])/4)
+            self.params['time_bounds'][0], self.params['time_bounds'][1], num=int(self.params['dim']/4))
         if self.graph.number_of_nodes() > self.params['thresh']:
             print('Using Chebyshev polynomial approximation of heat kernel')
             proc = 'approx'
