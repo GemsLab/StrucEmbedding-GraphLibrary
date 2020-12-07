@@ -27,7 +27,7 @@ The library requires *Python 3.7+*.
 
 Make sure you are using *Python 3.7+* for all below!
 
-`python setup.py install`
+`python3 setup.py install`
 
 After installation, we  highly recommend you go through our [Tutorial](https://github.com/GemsLab/StrucEmbeddingLibrary/blob/master/Tutorial.ipynb) to see how SEMB library works.
 
