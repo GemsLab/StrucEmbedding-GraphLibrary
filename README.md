@@ -25,11 +25,40 @@ The library requires *Python 3.7+*.
 
 ## Installation and Usage
 
-Make sure you are using *Python 3.7+* for all below!
+Make sure you are using *Python 3.6+* for all below!
 
-`python3 setup.py install`
+1. First, creat a virtual environment and activate the virtual environment.
 
-After installation, we  highly recommend you go through our [Tutorial](https://github.com/GemsLab/StrucEmbeddingLibrary/blob/master/Tutorial.ipynb) to see how SEMB library works.
+   ```bash
+   python3 -m venv <VENV_NAME>
+   source <VENV_NAME>/bin/activate
+   ```
+
+2. Change directory to the `StrucEmbeddingLibrary` and install the dependencies
+
+   ```bash
+   (<VENV_NAME>) cd StrucEmbeddingLibrary
+   (<VENV_NAME>) python3 -m pip install -r requirements.txt --no-cache-dir
+   ```
+
+3. Install the `SEMB` package
+
+   ```bash
+   (<VENV_NAME>) cd StrucEmbeddingLibrary
+   (<VENV_NAME>) python3 setup.py install
+   ```
+
+   After installation, we  highly recommend you go through our [Tutorial](https://github.com/GemsLab/StrucEmbeddingLibrary/blob/master/Tutorial.ipynb) to see how SEMB library works.
+
+4. To enable using the jupyter notebook, do the following,
+
+   ```bash
+   (<VENV_NAME>) python3 -m pip install ipykernel --no-cache-dir
+   (<VENV_NAME>) python3 -m ipykernel install --name=<VENV_NAME>
+   (<VENV_NAME>) jupyter notebook
+   ```
+
+   Choose `<VENV_NAME>` at the top right corner of the page when creating a new jupyter notebook / running the tutorial notebook.
 
 
 
