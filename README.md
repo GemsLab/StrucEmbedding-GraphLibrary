@@ -20,8 +20,9 @@ The library itself has already included a set of popular methods and datasets re
   | [EU air-traffic](https://github.com/leoribeiro/struc2vec/tree/master/graph) | 399     | 5,995   |
   | [US air-traffic](https://github.com/leoribeiro/struc2vec/tree/master/graph) | 1,190   | 13,599  |
   | [DD6](https://ls11-www.cs.tu-dortmund.de/staff/morris/graphkerneldatasets) | 4,152   | 20,640  |
+  | Synthetic Datasets                                           |         |         |
 
-The library requires *Python 3.7+*.
+The library requires *Python 3.7* for best usage. In *Python 3.8*, the Tensorflow 1.14.0 used in DRNE might not be successfully installed.
 
 ## Installation and Usage
 
@@ -88,22 +89,13 @@ Currently, SEMB only supports embedding and evaluation on *undirected* and *unwe
 - Within the package root directory, make sure `__init__.py` is present
 - Create a ` method.py` and make a `Method` class that inherits from `from semb.methods import BaseMethod` and implement the required methods. See `semb/methods/node2vec/method.py` for more details.
   - Please make sure that your implemented method accepts `networkx.classes.graph.Graph` as input.
-  - Please make sure that when `train()` is called, the `self.embeddings` should be a Python built-in `dict()` with key as `<Node_id (int)>` and value(embedding) as `<List(float)>`.
+  - Please make sure that when `train()` is called, the `self.embeddings` should be a Python built-in `dict()` with key as `<Node_id (int)>` and value(embedding) as `<List (float)>`.
 - Install the package via `setup.py` or pip.
 - Now the method is load-able by the main client program that uses `semb`!
 
 ### Note
 For both `dataset` and `method` extensions, make sure the `get_id()` to be overridden and returns the same id as your chosen id in your package name.
 
-
-
-### Malicious
+### Contact
 
 If you encounter any question using our SEMB library, feel free to raise an issue or send an email to [kinmark@umich.edu](kinmark@umich.edu). Go Blue!
-
-
-
-
-
-
-
