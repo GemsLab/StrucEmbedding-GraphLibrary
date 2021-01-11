@@ -1,4 +1,4 @@
-# The Structural EMBedding library (SEMB)
+# The Structural EMBedding graph library (SEMB)
 
 **Authors: GEMS Lab Team @ University of Michigan**
 
