@@ -1,6 +1,6 @@
 # The Structural EMBedding graph library (SEMB)
 
-**Authors: GEMS Lab Team @ University of Michigan** ([Mark Jin](https://mark-jin.com), Ruowang Zhang, Mark Heimann)
+**Authors: GEMS Lab Team @ University of Michigan** ([Mark Jin](https://mark-jin.com), Ruowang Zhang, [Mark Heimann](https://markheimann.github.io))
 
 This SEMB library allows fast onboarding to get and evaluate structural node embeddings. With the unified API interface and the modular codebase, SEMB library enables easy intergration of 3rd-party methods and datasets.
 
