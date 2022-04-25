@@ -10,7 +10,6 @@ gensim==3.7.1
 tqdm==4.32.2
 texttable==1.6.2
 fastdtw==0.3.4
-sparsesvd==0.2.2
 grakel==0.1a6
 scikit-learn==0.21.3
 absl-py==0.11.0
@@ -38,7 +37,6 @@ protobuf==3.14.0
 pyparsing==2.4.7
 python-dateutil==2.8.1
 pytz==2020.4
-semb==0.0.1
 six==1.15.0
 smart-open==4.0.1
 termcolor==1.1.0
@@ -46,3 +44,6 @@ threadpoolctl==2.1.0
 Werkzeug==1.0.1
 wrapt==1.12.1
 zipp==3.4.0
+sparsesvd~=0.2.0
+requests~=2.27.1
+requests-file~=1.5.1
