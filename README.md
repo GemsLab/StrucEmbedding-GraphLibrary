@@ -69,9 +69,9 @@ First make sure the `semb` library is installed.
 
 Currently, SEMB only supports embedding and evaluation on *undirected* and *unweighted* graphs.
 
-- Create a Python 3.7+ [package](https://packaging.python.org/tutorials/packaging-projects/) with a name in form at `semb/datasets/[$YOUR_CHOSEN_DATASET_ID]`
+- Create a Python 3.6+ [package](https://packaging.python.org/tutorials/packaging-projects/) with a name in form at `semb/datasets/[$YOUR_CHOSEN_DATASET_ID]`
 - Within the package root directory, make sure `__init__.py` is present
-- Create a `dataset.py` and make a `Method` class that inherits from `from semb.datasets import BaseDataset` and implement the required methods. See `semb/datasets/airports/dataset.py` for more details.
+- Create a `dataset.py` and make a `Dataset` class that inherits from `from semb.datasets import BaseDataset` and implement the required methods. See `semb/datasets/airports/dataset.py` for more details.
   - To use the built-in `load_dataset()`method, we accept the graph edgelist with the following format
     - `<Node1_id (int)> <Blank> <Node2_id (int)> <\n>`
     - Otherwise, you can overload and implement your own `load_dataset()` function. Please make sure that the returned graph is of `networkx.classes.graph.Graph` datatype. 
@@ -83,7 +83,7 @@ Currently, SEMB only supports embedding and evaluation on *undirected* and *unwe
 
 ### Developing 3rd party Method extension
 
-- Create a Python 3.7+ [package](https://packaging.python.org/tutorials/packaging-projects/) with a name in form of `semb/methods/[$YOUR_CHOSEN_METHOD_ID]`
+- Create a Python 3.6+ [package](https://packaging.python.org/tutorials/packaging-projects/) with a name in form of `semb/methods/[$YOUR_CHOSEN_METHOD_ID]`
 - Within the package root directory, make sure `__init__.py` is present
 - Create a ` method.py` and make a `Method` class that inherits from `from semb.methods import BaseMethod` and implement the required methods. See `semb/methods/node2vec/method.py` for more details.
   - Please make sure that your implemented method accepts `networkx.classes.graph.Graph` as input.
